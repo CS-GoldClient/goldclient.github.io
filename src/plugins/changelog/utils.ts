@@ -53,7 +53,7 @@ function generateDescription(rawContent: string, versionTitle: string, defaultRe
   const cleanItems: string[] = [];
   for (const line of lines) {
     const trimmed = line.trim();
-    if (!trimmed || trimmed.startsWith('#') || trimmed.startsWith('<!--')) {
+    if (!trimmed || trimmed.startsWith('#') || trimmed.startsWith('<!--') || trimmed.startsWith(':::')) {
       continue;
     }
     const cleaned = cleanMarkdownLine(trimmed);
