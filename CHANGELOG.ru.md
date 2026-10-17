@@ -71,13 +71,16 @@
 - Исправлено затирание HUD-сообщений и подсказок сообщениями DHUD с каналом, а текста DHUD с каналом — сообщениями DHUD без канала
 - Исправлена запись за пределы буфера при канале DHUD 16 и выше: такое сообщение показывается как DHUD без канала
 - Возвращены частицы обломков стены при попадании пуль (`R_BulletImpactParticles`), убранные в 2.5.7.0 (@bruh69240) [issue=goldclient-plus/GoldSrc-Tracker/138]
+- Исправлено зеркальное отображение гранаты в руках со щитом на другую сторону экрана, появившееся в 2.5.7.0
+- Исправлено исчезновение модели ножа и гранат в руках со щитом при `cl_minviewmodel 1`, появившееся в 2.5.7.0 (@timkaplay2002-beep) [issue=goldclient-plus/GoldSrc-Tracker/142]
+- Исправлено зеркальное отображение оружия в руках со щитом при просмотре демо, как у оружия без щита
 
 #### Авторы 1 {#authors}
 <!-- authors -->
 
 - s1lent ([@s1lent](https://github.com/s1lentq))
 
-#### Тестеры 5 {#testers}
+#### Тестеры 6 {#testers}
 <!-- testers -->
 
 - zayzox ([@zayzox](https://github.com/zayzox))
@@ -85,6 +88,7 @@
 - WessTorn ([@WessTorn](https://github.com/WessTorn))
 - razex404 ([@razex404](https://github.com/razex404))
 - bruh69240 ([@bruh69240](https://github.com/bruh69240))
+- timkaplay2002-beep ([@timkaplay2002-beep](https://github.com/timkaplay2002-beep))
 
 ## 2.5.7.0 (2026-07-05)
 

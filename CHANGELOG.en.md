@@ -71,13 +71,16 @@ Version **2.5.7.0** remains the last one for Windows XP and Vista: on these syst
 - Fixed DHUD messages with a channel wiping out HUD messages and hints, and DHUD messages without a channel replacing the text of DHUD messages with a channel
 - Fixed an out-of-bounds buffer write for a DHUD channel of 16 and above: such a message is shown as a DHUD without a channel
 - Restored wall debris particles on bullet impacts (`R_BulletImpactParticles`), removed in 2.5.7.0 (@bruh69240) [issue=goldclient-plus/GoldSrc-Tracker/138]
+- Fixed a grenade held with a shield being mirrored to the other side of the screen, broken in 2.5.7.0
+- Fixed the knife and grenade models disappearing when held with a shield with `cl_minviewmodel 1`, broken in 2.5.7.0 (@timkaplay2002-beep) [issue=goldclient-plus/GoldSrc-Tracker/142]
+- Fixed weapons held with a shield being mirrored in demo playback the same way as weapons without a shield
 
 #### Authors 1 {#authors}
 <!-- authors -->
 
 - s1lent ([@s1lent](https://github.com/s1lentq))
 
-#### Testers 5 {#testers}
+#### Testers 6 {#testers}
 <!-- testers -->
 
 - zayzox ([@zayzox](https://github.com/zayzox))
@@ -85,6 +88,7 @@ Version **2.5.7.0** remains the last one for Windows XP and Vista: on these syst
 - WessTorn ([@WessTorn](https://github.com/WessTorn))
 - razex404 ([@razex404](https://github.com/razex404))
 - bruh69240 ([@bruh69240](https://github.com/bruh69240))
+- timkaplay2002-beep ([@timkaplay2002-beep](https://github.com/timkaplay2002-beep))
 
 ## 2.5.7.0 (2026-07-05)
 
