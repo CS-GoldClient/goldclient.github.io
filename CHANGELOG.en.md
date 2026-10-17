@@ -26,7 +26,7 @@ Version **2.5.7.0** remains the last one for Windows XP and Vista: on these syst
         - `-videolevel 0|1|2` — quality preset for a single run
 - Implemented multithreaded rendering: frames are prepared on a separate thread (`mat_queue_mode`, Default: -1 — automatic on 2+ cores)
 - Added display selection to the video settings
-- Added **GoldNet** account password recovery and change in the client (@zayzox) [issue=goldclient-plus/GoldSrc-Tracker/144]
+- Added **GoldNet** account password recovery and change in the client (@zayzox) [issue=CS-GoldClient/tracker/144]
 
 <!-- truncate -->
 
@@ -65,14 +65,14 @@ Version **2.5.7.0** remains the last one for Windows XP and Vista: on these syst
 
 - Fixed looping sounds playing unrelated sounds after a pitch change [pull=rehlds/ReGameDLL_CS/1185]
 - Fixed demo recording in several game instances launched from the same folder: instances no longer overwrite the beginning of each other's demos [stockbug]
-- Fixed decals rendering without transparency on transparent textures (@dvla91315-lang) [issue=goldclient-plus/GoldSrc-Tracker/131]
-- Restored the stock HUD message behavior changed in 2.5.7.0: frequently updated text no longer dims or pushes out DHUD messages (@WessTorn) (@razex404) [issue=goldclient-plus/GoldSrc-Tracker/136] [issue=goldclient-plus/GoldSrc-Tracker/137]
+- Fixed decals rendering without transparency on transparent textures (@dvla91315-lang) [issue=CS-GoldClient/tracker/131]
+- Restored the stock HUD message behavior changed in 2.5.7.0: frequently updated text no longer dims or pushes out DHUD messages (@WessTorn) (@razex404) [issue=CS-GoldClient/tracker/136] [issue=CS-GoldClient/tracker/137]
     - For updated text without overlapping, use DHUD messages with a channel
 - Fixed DHUD messages with a channel wiping out HUD messages and hints, and DHUD messages without a channel replacing the text of DHUD messages with a channel
 - Fixed an out-of-bounds buffer write for a DHUD channel of 16 and above: such a message is shown as a DHUD without a channel
-- Restored wall debris particles on bullet impacts (`R_BulletImpactParticles`), removed in 2.5.7.0 (@bruh69240) [issue=goldclient-plus/GoldSrc-Tracker/138]
+- Restored wall debris particles on bullet impacts (`R_BulletImpactParticles`), removed in 2.5.7.0 (@bruh69240) [issue=CS-GoldClient/tracker/138]
 - Fixed a grenade held with a shield being mirrored to the other side of the screen, broken in 2.5.7.0
-- Fixed the knife and grenade models disappearing when held with a shield with `cl_minviewmodel 1`, broken in 2.5.7.0 (@timkaplay2002-beep) [issue=goldclient-plus/GoldSrc-Tracker/142]
+- Fixed the knife and grenade models disappearing when held with a shield with `cl_minviewmodel 1`, broken in 2.5.7.0 (@timkaplay2002-beep) [issue=CS-GoldClient/tracker/142]
 - Fixed weapons held with a shield being mirrored in demo playback the same way as weapons without a shield
 
 #### Authors 1 {#authors}
@@ -146,7 +146,7 @@ Version **2.5.7.0** remains the last one for Windows XP and Vista: on these syst
 - Added Escape scenario support to HUD radar (@esotericdesign) [id:c6b0386]
 - Added ConVar `cl_cmdtickrate` to fully decouple movement physics from framerate (FPS), enforcing a consistent update tickrate regardless of FPS [id:de46cf5]
 - Added `-gl_legacy` launch parameter to force legacy OpenGL mode for compatibility [id:7305732]
-- Added country flags to the **Favorites**, **Friends**, and **History** tabs in the server browser (@GLoOoccK) [id:7305732] [issue=goldclient-plus/GoldSrc-Tracker/115]
+- Added country flags to the **Favorites**, **Friends**, and **History** tabs in the server browser (@GLoOoccK) [id:7305732] [issue=CS-GoldClient/tracker/115]
 - Added ConVar `cl_discord_join_mode` to control Discord **Join Game** functionality (0 = public connection, 1 = friends-only mode respecting Discord privacy settings) [id:40d4a74]
 
 #### :bug: Bug Fix {#fixes}
@@ -189,16 +189,16 @@ Version **2.5.7.0** remains the last one for Windows XP and Vista: on these syst
 - Fixed `Ctrl+Shift+Alt+R` shortcut for reloading UI schemes (now works correctly) [id:c8ca0a5] [stockbug]
 - Fixed a bug where resizable VGUI dialogs could go off-screen after changing video resolution [id:c8ca0a5]
 - Fixed HUD messages overlapping the game menu when displaced by the dynamic radar (@DeMNiX) [id:58ab4f9]
-- Fixed HUD messages overlapping and brightness issues as they now correctly respect server channel IDs (@gamikcs) [id:58ab4f9] [issue=goldclient-plus/GoldSrc-Tracker/93] [stockbug]
-- Fixed jittery player movement and position offset while driving vehicles (@Nord1cWarr1or) [id:58ab4f9] [issue=goldclient-plus/GoldSrc-Tracker/87]
+- Fixed HUD messages overlapping and brightness issues as they now correctly respect server channel IDs (@gamikcs) [id:58ab4f9] [issue=CS-GoldClient/tracker/93] [stockbug]
+- Fixed jittery player movement and position offset while driving vehicles (@Nord1cWarr1or) [id:58ab4f9] [issue=CS-GoldClient/tracker/87]
 - Fixed a crash when parsing long vox/sentence strings [id:c6b0386]
 - Fixed MP3 music stopping playing after multiple custom tracks (e.g. RoundEnd sounds) (@metita) (@gamikcs) [id:de46cf5] [stockbug]
 - Fixed a bug where HUD radar showed enemies through visually opaque non-solid walls (@metita) [id:c6b0386]
-- Fixed a bug where the player gets completely stuck and unable to move on laggy servers when playing with extremely high FPS (@gamikcs) [id:de46cf5] [issue=goldclient-plus/GoldSrc-Tracker/99] [issue=ValveSoftware/halflife/3957] [stockbug]
-- Fixed a bug where loading large demo files would time out and forcefully drop back to the main menu (@Nord1cWarr1or) [issue=goldclient-plus/GoldSrc-Tracker/102] [id:de46cf5]
-- Fixed a bug where minimizing or restoring game window triggered false release events for unpressed bound keys, causing unintended actions and console spam (@gamikcs) [issue=goldclient-plus/GoldSrc-Tracker/98] [id:908656d]
-- Fixed `kRenderTransAlpha` not affecting viewmodels correctly when used through `gcl_write_rendermode` (@GLoOoccK) [id:7305732] [issue=goldclient-plus/GoldSrc-Tracker/113]
-- Fixed incorrect handling of key release events for custom key binds while typing in chat when the key was never pressed (@gamikcs) [issue=goldclient-plus/GoldSrc-Tracker/114] [id:7305732] [stockbug]
+- Fixed a bug where the player gets completely stuck and unable to move on laggy servers when playing with extremely high FPS (@gamikcs) [id:de46cf5] [issue=CS-GoldClient/tracker/99] [issue=ValveSoftware/halflife/3957] [stockbug]
+- Fixed a bug where loading large demo files would time out and forcefully drop back to the main menu (@Nord1cWarr1or) [issue=CS-GoldClient/tracker/102] [id:de46cf5]
+- Fixed a bug where minimizing or restoring game window triggered false release events for unpressed bound keys, causing unintended actions and console spam (@gamikcs) [issue=CS-GoldClient/tracker/98] [id:908656d]
+- Fixed `kRenderTransAlpha` not affecting viewmodels correctly when used through `gcl_write_rendermode` (@GLoOoccK) [id:7305732] [issue=CS-GoldClient/tracker/113]
+- Fixed incorrect handling of key release events for custom key binds while typing in chat when the key was never pressed (@gamikcs) [issue=CS-GoldClient/tracker/114] [id:7305732] [stockbug]
 - Fixed incorrect application of view angles to the local player entity during the death state (@metita) [id:636de67]
 - Fixed anti-cheat false positives caused by the recent mouse precision update (@denyamad) [id:71520b0]
 
