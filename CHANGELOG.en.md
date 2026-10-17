@@ -74,13 +74,15 @@ Version **2.5.7.0** remains the last one for Windows XP and Vista: on these syst
 - Fixed a grenade held with a shield being mirrored to the other side of the screen, broken in 2.5.7.0
 - Fixed the knife and grenade models disappearing when held with a shield with `cl_minviewmodel 1`, broken in 2.5.7.0 (@timkaplay2002-beep) [issue=CS-GoldClient/tracker/142]
 - Fixed weapons held with a shield being mirrored in demo playback the same way as weapons without a shield
+- Fixed `cl_autowepswitch 0` being ignored on servers when the userinfo is full, for example with a long nickname, broken in 2.5.7.0 (@ted0tw) [issue=CS-GoldClient/tracker/133]
+    - When the userinfo does not fit, keys set by server plugins are left out first, then `topcolor`, `bottomcolor` and `_ah`
 
 #### Authors 1 {#authors}
 <!-- authors -->
 
 - s1lent ([@s1lent](https://github.com/s1lentq))
 
-#### Testers 6 {#testers}
+#### Testers 7 {#testers}
 <!-- testers -->
 
 - zayzox ([@zayzox](https://github.com/zayzox))
@@ -89,6 +91,7 @@ Version **2.5.7.0** remains the last one for Windows XP and Vista: on these syst
 - razex404 ([@razex404](https://github.com/razex404))
 - bruh69240 ([@bruh69240](https://github.com/bruh69240))
 - timkaplay2002-beep ([@timkaplay2002-beep](https://github.com/timkaplay2002-beep))
+- ted0tw ([@ted0tw](https://github.com/ted0tw))
 
 ## 2.5.7.0 (2026-07-05)
 

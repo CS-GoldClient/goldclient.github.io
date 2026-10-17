@@ -74,13 +74,15 @@
 - Исправлено зеркальное отображение гранаты в руках со щитом на другую сторону экрана, появившееся в 2.5.7.0
 - Исправлено исчезновение модели ножа и гранат в руках со щитом при `cl_minviewmodel 1`, появившееся в 2.5.7.0 (@timkaplay2002-beep) [issue=CS-GoldClient/tracker/142]
 - Исправлено зеркальное отображение оружия в руках со щитом при просмотре демо, как у оружия без щита
+- Исправлено игнорирование `cl_autowepswitch 0` на серверах при переполненном userinfo, например с длинным ником, появившееся в 2.5.7.0 (@ted0tw) [issue=CS-GoldClient/tracker/133]
+    - Если userinfo не помещается, первыми не отправляются ключи, установленные плагинами сервера, затем `topcolor`, `bottomcolor` и `_ah`
 
 #### Авторы 1 {#authors}
 <!-- authors -->
 
 - s1lent ([@s1lent](https://github.com/s1lentq))
 
-#### Тестеры 6 {#testers}
+#### Тестеры 7 {#testers}
 <!-- testers -->
 
 - zayzox ([@zayzox](https://github.com/zayzox))
@@ -89,6 +91,7 @@
 - razex404 ([@razex404](https://github.com/razex404))
 - bruh69240 ([@bruh69240](https://github.com/bruh69240))
 - timkaplay2002-beep ([@timkaplay2002-beep](https://github.com/timkaplay2002-beep))
+- ted0tw ([@ted0tw](https://github.com/ted0tw))
 
 ## 2.5.7.0 (2026-07-05)
 
