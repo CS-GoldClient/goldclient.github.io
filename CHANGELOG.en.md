@@ -1,4 +1,91 @@
 
+## 2.6.0 (2026-10-17) [Beta]
+
+:::warning[Windows XP and Vista are no longer supported]
+
+The minimum OS is now **Windows 7 SP1**
+
+Version **2.5.7.0** remains the last one for Windows XP and Vista: on these systems the auto-updater will not install 2.6.0 or later
+
+:::
+
+#### :rocket: New Feature {#new}
+
+- Implemented **x64** architecture support
+    - Added `cstrike_win64.exe` and `hl_win64.exe` launchers
+    - Increased the maximum engine memory (hunk) to 1 GB on x64 (`-heapsize`, Default: 256 MB)
+- Implemented a new **OpenGL 3.1+** renderer (Core Profile), the OpenGL 2.1 renderer remains available
+    - Added a trial run of the new renderer that falls back to OpenGL 2.1 if the choice is not confirmed
+    - Added automatic fallback to OpenGL 2.1 after a crash in the new renderer
+    - Added a check of GPU and driver support for the renderer
+    - Added graphics quality presets: **Performance**, **Balanced**, **Quality**
+    - Added per-pixel dynamic lighting and smooth light style animation in the **Quality** preset
+    - Added a shader cache for faster game startup (requires OpenGL 4.1 or the `GL_ARB_get_program_binary` extension)
+    - Added launch options
+        - `-renderer gl21|gl31` — renderer for a single run
+        - `-videolevel 0|1|2` — quality preset for a single run
+- Implemented multithreaded rendering: frames are prepared on a separate thread (`mat_queue_mode`, Default: -1 — automatic on 2+ cores)
+- Added display selection to the video settings
+- Added **GoldNet** account password recovery and change in the client (@zayzox) [issue=goldclient-plus/GoldSrc-Tracker/144]
+
+<!-- truncate -->
+
+- Improved reliability of the automatic client update
+    - An update is installed as a whole or rolled back, including after a crash or an unexpected shutdown during installation
+    - Added verification of downloaded files before installation and signing of update manifests
+    - The newest version compatible with your Windows is installed; incompatible versions are marked in the list with the required Windows version
+- Game restarts (renderer change, update) now run in a new process with no state left from the previous run; the `-nogameprocess` launch option keeps the game in the launcher process
+- Added `-allowmultiple` launch option to run several game instances (alias `-nosingle`)
+- Added ConVars to control decal overlap
+    - `r_decal_overlap_count` (Default: 3)
+    - `r_decal_overlap_area` (Default: 0.4)
+    - `r_decal_cover_count` (Default: 4)
+- Optimized rendering of VGUI2 text and RichText (chat, console, MOTD)
+- Optimized player model bone setup with SIMD instructions
+- Optimized hitbox hit checks: player bones are no longer set up again in firefights with 6+ players
+- Added ConVar `cl_threaded_bone_setup` for multithreaded model bone setup (Default: 0)
+- Added VPK archive support
+- Added diagnostic launch options, the log is written to `logs/goldclient.log` and configured with `logging.cfg`
+    - `-diagnostics` — bug report mode: detailed log (debug) and diagnostic commands of all modules
+    - `-loglevel` — log level: `trace`, `debug`, `info`, `warning`, `error`, `off`
+    - `-logchannels` — log only the comma-separated channels: `Startup`, `Depot`, `FS`, `Engine`, `Video`, `Render`, `Steam`, `UI`, `Net`, `Voice`, `Consistency`
+    - `-logfile` — log file path
+    - `-logmaxsize` — log file size in MB before rotation (Default: 5)
+    - `-logmaxfiles` — number of logs to keep (Default: 2)
+    - `-logflush` — write every message to disk immediately
+    - `-nolog` — disable the log
+- Added minidump creation on a crash in any game thread
+- Added `-nocrashdialog` and `-nomessagebox` launch options to disable error dialogs
+- Added a frame profiler with a CPU/GPU graph: `-vprof` launch option, ConVar `vprof_graph` and the `vprof_graph_*` ConVars for graph settings, `vprof_dump_spikes` for recording slow frames
+- Added memory diagnostics commands `mem_status`, `mem_dump`, `mem_verify`, `mem_checkpoint`, `mem_compact` and ConVar `mem_watch`
+- Added `timedemo` results logging to `timedemo.log` and the `timedemoquit` command
+- Rewrote the engine base libraries tier0/tier1/vstdlib: memory manager, logging, console variables
+
+#### :bug: Bug Fix {#fixes}
+
+- Fixed looping sounds playing unrelated sounds after a pitch change [pull=rehlds/ReGameDLL_CS/1185]
+- Fixed demo recording in several game instances launched from the same folder: instances no longer overwrite the beginning of each other's demos [stockbug]
+- Fixed decals rendering without transparency on transparent textures (@dvla91315-lang) [issue=goldclient-plus/GoldSrc-Tracker/131]
+- Restored the stock HUD message behavior changed in 2.5.7.0: frequently updated text no longer dims or pushes out DHUD messages (@WessTorn) (@razex404) [issue=goldclient-plus/GoldSrc-Tracker/136] [issue=goldclient-plus/GoldSrc-Tracker/137]
+    - For updated text without overlapping, use DHUD messages with a channel
+- Fixed DHUD messages with a channel wiping out HUD messages and hints, and DHUD messages without a channel replacing the text of DHUD messages with a channel
+- Fixed an out-of-bounds buffer write for a DHUD channel of 16 and above: such a message is shown as a DHUD without a channel
+- Restored wall debris particles on bullet impacts (`R_BulletImpactParticles`), removed in 2.5.7.0 (@bruh69240) [issue=goldclient-plus/GoldSrc-Tracker/138]
+
+#### Authors 1 {#authors}
+<!-- authors -->
+
+- s1lent ([@s1lent](https://github.com/s1lentq))
+
+#### Testers 5 {#testers}
+<!-- testers -->
+
+- zayzox ([@zayzox](https://github.com/zayzox))
+- dvla91315-lang ([@dvla91315-lang](https://github.com/dvla91315-lang))
+- WessTorn ([@WessTorn](https://github.com/WessTorn))
+- razex404 ([@razex404](https://github.com/razex404))
+- bruh69240 ([@bruh69240](https://github.com/bruh69240))
+
 ## 2.5.7.0 (2026-07-05)
 
 #### :rocket: New Feature {#new}
