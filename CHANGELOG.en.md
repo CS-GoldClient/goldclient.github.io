@@ -11,20 +11,27 @@ Version **2.5.7.0** remains the last one for Windows XP and Vista: on these syst
 
 #### :rocket: New Feature {#new}
 
-- Implemented **x64** architecture support
+- :zap: Implemented **x64** architecture support
     - Added `cstrike_win64.exe` and `hl_win64.exe` launchers
+    - On 64-bit Windows `cstrike.exe` starts the 64-bit version automatically, `hl.exe` starts the 32-bit one as before
     - Increased the maximum engine memory (hunk) to 1 GB on x64 (`-heapsize`, Default: 256 MB)
-- Implemented a new **OpenGL 3.1+** renderer (Core Profile), the OpenGL 2.1 renderer remains available
+    - Added launch options
+        - `-force64bit` — force the 64-bit version
+        - `-force32bit` — run the 32-bit version on 64-bit Windows
+- :zap: Implemented a new **OpenGL 3.1+** renderer (Core Profile), the OpenGL 2.1 renderer remains available
     - Added a trial run of the new renderer that falls back to OpenGL 2.1 if the choice is not confirmed
     - Added automatic fallback to OpenGL 2.1 after a crash in the new renderer
     - Added a check of GPU and driver support for the renderer
     - Added graphics quality presets: **Performance**, **Balanced**, **Quality**
     - Added per-pixel dynamic lighting and smooth light style animation in the **Quality** preset
     - Added a shader cache for faster game startup (requires OpenGL 4.1 or the `GL_ARB_get_program_binary` extension)
+    - Implemented multithreaded rendering: frames are prepared on a dedicated render thread
+        - Added ConVar `mat_queue_mode` (Default: -1 — automatic on 2+ cores)
+    - Screenshots no longer freeze the picture: the render thread hands over the frame capture once it is ready, without stopping the drawing
+        - This covers `screenshot`, `snapshot`, `startmovie` frames, `envmap` and screen captures requested by the server
     - Added launch options
-        - `-renderer gl21|gl31` — renderer for a single run
+        - `-renderer gl21|gl31`, `-gl21`, `-gl31` — renderer for a single run
         - `-videolevel 0|1|2` — quality preset for a single run
-- Implemented multithreaded rendering: frames are prepared on a separate thread (`mat_queue_mode`, Default: -1 — automatic on 2+ cores)
 - Added display selection to the video settings
 - Added **GoldNet** account password recovery and change in the client (@zayzox) [issue=CS-GoldClient/tracker/144]
 
@@ -34,37 +41,54 @@ Version **2.5.7.0** remains the last one for Windows XP and Vista: on these syst
     - An update is installed as a whole or rolled back, including after a crash or an unexpected shutdown during installation
     - Added verification of downloaded files before installation and signing of update manifests
     - The newest version compatible with your Windows is installed; incompatible versions are marked in the list with the required Windows version
-- Game restarts (renderer change, update) now run in a new process with no state left from the previous run; the `-nogameprocess` launch option keeps the game in the launcher process
-- Added `-allowmultiple` launch option to run several game instances (alias `-nosingle`)
-- Added ConVars to control decal overlap
-    - `r_decal_overlap_count` (Default: 3)
-    - `r_decal_overlap_area` (Default: 0.4)
-    - `r_decal_cover_count` (Default: 4)
+- Game restarts (renderer change, update) now run in a new process with no state left from the previous run
+- Improved loading of Steam player avatars
+    - Added an avatar loading indicator and an unverified Steam account badge to the scoreboard
+- Added decal overlap control
+    - Added ConVars
+        - `r_decal_overlap_count` (Default: 3)
+        - `r_decal_overlap_area` (Default: 0.4)
+        - `r_decal_cover_count` (Default: 4)
 - Optimized rendering of VGUI2 text and RichText (chat, console, MOTD)
-- Optimized player model bone setup with SIMD instructions
+- Optimized player model bone setup with SIMD instructions, added multithreaded bone setup
+    - Added experimental ConVar `cl_threaded_bone_setup` (Default: 0 — off until testing is complete)
 - Optimized hitbox hit checks: player bones are no longer set up again in firefights with 6+ players
-- Added ConVar `cl_threaded_bone_setup` for multithreaded model bone setup (Default: 0)
 - Added VPK archive support
-- Added diagnostic launch options, the log is written to `logs/goldclient.log` and configured with `logging.cfg`
-    - `-diagnostics` — bug report mode: detailed log (debug) and diagnostic commands of all modules
-    - `-loglevel` — log level: `trace`, `debug`, `info`, `warning`, `error`, `off`
-    - `-logchannels` — log only the comma-separated channels: `Startup`, `Depot`, `FS`, `Engine`, `Video`, `Render`, `Steam`, `UI`, `Net`, `Voice`, `Consistency`
-    - `-logfile` — log file path
-    - `-logmaxsize` — log file size in MB before rotation (Default: 5)
-    - `-logmaxfiles` — number of logs to keep (Default: 2)
-    - `-logflush` — write every message to disk immediately
-    - `-nolog` — disable the log
+- Added the `logs/goldclient.log` log for bug reports, configured with `logging.cfg`
+    - Added launch options
+        - `-diagnostics` — bug report mode: detailed log (debug) and diagnostic commands of all modules
+        - `-loglevel` — log level: `trace`, `debug`, `info`, `warning`, `error`, `off`
+        - `-logchannels` — log only the comma-separated channels: `Startup`, `Depot`, `FS`, `Engine`, `Video`, `Render`, `Steam`, `UI`, `Net`, `Voice`, `Consistency`
+        - `-logfile` — log file path
+        - `-logmaxsize` — log file size in MB before rotation (Default: 5)
+        - `-logmaxfiles` — number of logs to keep (Default: 2)
+        - `-logflush` — write every message to disk immediately
+        - `-nolog` — disable the log
 - Added minidump creation on a crash in any game thread
-- Added `-nocrashdialog` and `-nomessagebox` launch options to disable error dialogs
-- Added a frame profiler with a CPU/GPU graph: `-vprof` launch option, ConVar `vprof_graph` and the `vprof_graph_*` ConVars for graph settings, `vprof_dump_spikes` for recording slow frames
-- Added memory diagnostics commands `mem_status`, `mem_dump`, `mem_verify`, `mem_checkpoint`, `mem_compact` and ConVar `mem_watch`
-- Added `timedemo` results logging to `timedemo.log` and the `timedemoquit` command
+- Added a frame profiler with a CPU/GPU graph
+    - Added launch options
+        - `-vprof`
+    - Added ConVars (available only when launched with `-vprof`)
+        - `vprof_graph`
+        - `vprof_graph_*` — graph appearance
+        - `vprof_dump_spikes` — recording of slow frames
+        - `vprof_dump_spikes_node`
+- Added `timedemo` results logging to `timedemo.log`
+    - Added commands
+        - `timedemoquit`
+- Added technical ConVars, commands and launch options for debugging
+    - Added ConVars
+        - `mem_watch`, `r_drawworld`, `r_drawdecals`, `r_drawbatchdecals`, `mat_depthbias_decal`, `mat_slopescaledepthbias_decal`
+    - Added commands
+        - `mem_status`, `mem_checkpoint`, `mem_verify`, `mem_dump`, `mem_compact`, `mem_incremental_compact`, `fs_warning_level`, `con_min_severity`
+    - Added launch options
+        - `-gl_spirv`, `-gl_glsl140`, `-gl_syncread`, `-fs_report_long_reads`
 - Rewrote the engine base libraries tier0/tier1/vstdlib: memory manager, logging, console variables
 
 #### :bug: Bug Fix {#fixes}
 
 - Fixed looping sounds playing unrelated sounds after a pitch change [pull=rehlds/ReGameDLL_CS/1185]
-- Fixed demo recording in several game instances launched from the same folder: instances no longer overwrite the beginning of each other's demos [stockbug]
+- Fixed demo recording in several game instances launched from the same folder: instances wrote the beginning of a demo to the shared `demoheader.dmf` file and overwrote each other, now each instance keeps it in memory [stockbug]
 - Fixed decals rendering without transparency on transparent textures (@dvla91315-lang) [issue=CS-GoldClient/tracker/131]
 - Restored the stock HUD message behavior changed in 2.5.7.0: frequently updated text no longer dims or pushes out DHUD messages (@WessTorn) (@razex404) [issue=CS-GoldClient/tracker/136] [issue=CS-GoldClient/tracker/137]
     - For updated text without overlapping, use DHUD messages with a channel
@@ -76,13 +100,16 @@ Version **2.5.7.0** remains the last one for Windows XP and Vista: on these syst
 - Fixed weapons held with a shield being mirrored in demo playback the same way as weapons without a shield
 - Fixed `cl_autowepswitch 0` being ignored on servers when the userinfo is full, for example with a long nickname, broken in 2.5.7.0 (@ted0tw) [issue=CS-GoldClient/tracker/133]
     - When the userinfo does not fit, keys set by server plugins are left out first, then `topcolor`, `bottomcolor` and `_ah`
+- Fixed `HudTextArgs` arguments getting mixed up: a long argument overwrote its neighbours, and a new message got the arguments of the previous one
+- Fixed missing avatars of Steam players when Steam briefly stopped responding: the avatar did not show up until the game was restarted (@Nord1cWarr1or) [issue=CS-GoldClient/tracker/146]
+- Fixed a crash on exiting the game while avatars were loading
 
 #### Authors 1 {#authors}
 <!-- authors -->
 
 - s1lent ([@s1lent](https://github.com/s1lentq))
 
-#### Testers 7 {#testers}
+#### Testers 8 {#testers}
 <!-- testers -->
 
 - zayzox ([@zayzox](https://github.com/zayzox))
@@ -92,6 +119,7 @@ Version **2.5.7.0** remains the last one for Windows XP and Vista: on these syst
 - bruh69240 ([@bruh69240](https://github.com/bruh69240))
 - timkaplay2002-beep ([@timkaplay2002-beep](https://github.com/timkaplay2002-beep))
 - ted0tw ([@ted0tw](https://github.com/ted0tw))
+- Nord1cWarr1or ([@Nord1cWarr1or](https://github.com/Nord1cWarr1or))
 
 ## 2.5.7.0 (2026-07-05)
 
