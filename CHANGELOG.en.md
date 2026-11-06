@@ -103,13 +103,15 @@ Version **2.5.7.0** remains the last one for Windows XP and Vista: on these syst
 - Fixed `HudTextArgs` arguments getting mixed up: a long argument overwrote its neighbours, and a new message got the arguments of the previous one
 - Fixed missing avatars of Steam players when Steam briefly stopped responding: the avatar did not show up until the game was restarted (@Nord1cWarr1or) [issue=CS-GoldClient/tracker/146]
 - Fixed a crash on exiting the game while avatars were loading
+- Fixed the demo player speed controls speeding up the game on a server, broken in 2.5.7.0 (@AliNemati13) [issue=CS-GoldClient/tracker/158]
+    - The demo speed now applies only while a demo is playing, `viewdemo` without a demo does not open the player on a server connection
 
 #### Authors 1 {#authors}
 <!-- authors -->
 
 - s1lent ([@s1lent](https://github.com/s1lentq))
 
-#### Testers 8 {#testers}
+#### Testers 9 {#testers}
 <!-- testers -->
 
 - zayzox ([@zayzox](https://github.com/zayzox))
@@ -120,6 +122,7 @@ Version **2.5.7.0** remains the last one for Windows XP and Vista: on these syst
 - timkaplay2002-beep ([@timkaplay2002-beep](https://github.com/timkaplay2002-beep))
 - ted0tw ([@ted0tw](https://github.com/ted0tw))
 - Nord1cWarr1or ([@Nord1cWarr1or](https://github.com/Nord1cWarr1or))
+- AliNemati13 ([@AliNemati13](https://github.com/AliNemati13))
 
 ## 2.5.7.0 (2026-07-05)
 

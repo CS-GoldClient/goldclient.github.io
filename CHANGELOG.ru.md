@@ -103,13 +103,15 @@
 - Исправлено смешивание аргументов `HudTextArgs`: длинный аргумент затирал соседние, а новое сообщение получало аргументы предыдущего
 - Исправлено отсутствие аватаров у игроков Steam, если Steam на время переставал отвечать: аватар не появлялся до перезапуска игры (@Nord1cWarr1or) [issue=CS-GoldClient/tracker/146]
 - Исправлен вылет при выходе из игры во время загрузки аватаров
+- Исправлено ускорение игры на сервере регулятором скорости плеера демо, появившееся в 2.5.7.0 (@AliNemati13) [issue=CS-GoldClient/tracker/158]
+    - Скорость демо теперь действует только во время воспроизведения демо, `viewdemo` без демо не открывает плеер при подключении к серверу
 
 #### Авторы 1 {#authors}
 <!-- authors -->
 
 - s1lent ([@s1lent](https://github.com/s1lentq))
 
-#### Тестеры 8 {#testers}
+#### Тестеры 9 {#testers}
 <!-- testers -->
 
 - zayzox ([@zayzox](https://github.com/zayzox))
@@ -120,6 +122,7 @@
 - timkaplay2002-beep ([@timkaplay2002-beep](https://github.com/timkaplay2002-beep))
 - ted0tw ([@ted0tw](https://github.com/ted0tw))
 - Nord1cWarr1or ([@Nord1cWarr1or](https://github.com/Nord1cWarr1or))
+- AliNemati13 ([@AliNemati13](https://github.com/AliNemati13))
 
 ## 2.5.7.0 (2026-07-05)
 

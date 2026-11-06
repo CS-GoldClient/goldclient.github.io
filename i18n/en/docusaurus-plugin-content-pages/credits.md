@@ -56,5 +56,6 @@ Community members who assisted with bug hunting, testing, and project developmen
 * [galaxy](https://vk.com/glx69)
 * [stalin_alex](https://vk.com/stalin_volki_server)
 * [Mishanya_t](https://vk.com/yralckuupublic)
+* [AliNemati13](https://github.com/AliNemati13)
 
 </div>
