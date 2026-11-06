@@ -12,6 +12,7 @@ The project was developed using the experience, open ideas, and technical suppor
 
 Projects and authors whose solutions, source code, or concepts served as a basis or source of inspiration:
 
+* **[Enko](https://github.com/kvstepchenko)** - contribution to the study of the original engine, helpful in the development and testing of the project
 * **[Xash3D FWGS](https://github.com/FWGS/xash3d-fwgs)** - utilization of ideas, references, engine bug fixes, and support for specific formats (e.g., half-float UV)
 * **[ReHLDS Team](https://github.com/rehlds)** - reverse engineering, development of the server base and API
 * **[Next21 Team](https://github.com/CS-NextClient)** - core concepts and implementation of custom user messages `ViewModelFX`, `HudSprite`, `DeathMsgWpn`
