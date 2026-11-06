@@ -56,6 +56,14 @@ Community members who assisted with bug hunting, testing, and project developmen
 * [galaxy](https://vk.com/glx69)
 * [stalin_alex](https://vk.com/stalin_volki_server)
 * [Mishanya_t](https://vk.com/yralckuupublic)
+* [zayzox](https://github.com/zayzox)
+* [dvla91315-lang](https://github.com/dvla91315-lang)
+* [WessTorn](https://github.com/WessTorn)
+* [razex404](https://github.com/razex404)
+* [bruh69240](https://github.com/bruh69240)
+* [timkaplay2002-beep](https://github.com/timkaplay2002-beep)
+* [ted0tw](https://github.com/ted0tw)
+* [denyamad](https://steamcommunity.com/id/denyamad)
 * [AliNemati13](https://github.com/AliNemati13)
 
 </div>
