@@ -3,6 +3,8 @@
 
 :::warning[Windows XP and Vista are no longer supported]
 
+Incompatible components: Chromium Embedded Framework (CEF) 109 — MOTD browser
+
 The minimum OS is now **Windows 7 SP1**
 
 Version **2.5.7.0** remains the last one for Windows XP and Vista: on these systems the auto-updater will not install 2.6.0 or later
@@ -13,12 +15,12 @@ Version **2.5.7.0** remains the last one for Windows XP and Vista: on these syst
 
 - :zap: Implemented **x64** architecture support
     - Added `cstrike_win64.exe` and `hl_win64.exe` launchers
-    - On 64-bit Windows `cstrike.exe` starts the 64-bit version automatically, `hl.exe` starts the 32-bit one as before
+    - On 64-bit :windows: Windows `cstrike.exe` starts the 64-bit version automatically, `hl.exe` starts the 32-bit one as before
     - Increased the maximum engine memory (hunk) to 1 GB on x64 (`-heapsize`, Default: 256 MB)
     - Added launch options
         - `-force64bit` — force the 64-bit version
         - `-force32bit` — run the 32-bit version on 64-bit Windows
-- :zap: Implemented a new **OpenGL 3.1+** renderer (Core Profile), the OpenGL 2.1 renderer remains available
+- :zap: Implemented a new **OpenGL 3.1+** graphics renderer (Core Profile), the previous OpenGL 2.1 renderer remains available for video cards that do not support OpenGL 3.1+
     - Added a trial run of the new renderer that falls back to OpenGL 2.1 if the choice is not confirmed
     - Added automatic fallback to OpenGL 2.1 after a crash in the new renderer
     - Added a check of GPU and driver support for the renderer
@@ -28,10 +30,13 @@ Version **2.5.7.0** remains the last one for Windows XP and Vista: on these syst
     - Implemented multithreaded rendering: frames are prepared on a dedicated render thread
         - Added ConVar `mat_queue_mode` (Default: -1 — automatic on 2+ cores)
     - Screenshots no longer freeze the picture: the render thread hands over the frame capture once it is ready, without stopping the drawing
-        - This covers `screenshot`, `snapshot`, `startmovie` frames, `envmap` and screen captures requested by the server
+        - This covers `screenshot`, `snapshot`, `startmovie` frames, `envmap`
     - Added launch options
         - `-renderer gl21|gl31`, `-gl21`, `-gl31` — renderer for a single run
         - `-videolevel 0|1|2` — quality preset for a single run
+- Implemented :linux: **Linux x64** support (Ubuntu 20.04 or newer, glibc 2.29+)
+    - Added the `hl.sh` launch script
+    - Auto-update, the MOTD browser and the Steam overlay work as on Windows
 - Added display selection to the video settings
 - Added **GoldNet** account password recovery and change in the client (@zayzox) [issue=CS-GoldClient/tracker/144]
 
@@ -40,7 +45,7 @@ Version **2.5.7.0** remains the last one for Windows XP and Vista: on these syst
 - Improved reliability of the automatic client update
     - An update is installed as a whole or rolled back, including after a crash or an unexpected shutdown during installation
     - Added verification of downloaded files before installation and signing of update manifests
-    - The newest version compatible with your Windows is installed; incompatible versions are marked in the list with the required Windows version
+    - The newest version compatible with your OS is installed; incompatible versions are marked in the list with the OS requirements
 - Game restarts (renderer change, update) now run in a new process with no state left from the previous run
 - Improved loading of Steam player avatars
     - Added an avatar loading indicator and an unverified Steam account badge to the scoreboard
@@ -52,9 +57,11 @@ Version **2.5.7.0** remains the last one for Windows XP and Vista: on these syst
 - Optimized rendering of VGUI2 text and RichText (chat, console, MOTD)
 - Optimized player model bone setup with SIMD instructions, added multithreaded bone setup
     - Added experimental ConVar `cl_threaded_bone_setup` (Default: 0 — off until testing is complete)
-- Optimized hitbox hit checks: player bones are no longer set up again in firefights with 6+ players
+- Optimized hitbox hit checks, reduced CPU load
 - Added VPK archive support
-- Added the `logs/goldclient.log` log for bug reports, configured with `logging.cfg`
+- Updated the MOTD browser (CEF 109), added https support
+- Replaced the sound and video playback components (Miles and Bink) with FFmpeg
+- Added the `logs/goldclient.log` log for bug reports, configured with the `logging.cfg` config
     - Added launch options
         - `-diagnostics` — bug report mode: detailed log (debug) and diagnostic commands of all modules
         - `-loglevel` — log level: `trace`, `debug`, `info`, `warning`, `error`, `off`
@@ -83,7 +90,7 @@ Version **2.5.7.0** remains the last one for Windows XP and Vista: on these syst
         - `mem_status`, `mem_checkpoint`, `mem_verify`, `mem_dump`, `mem_compact`, `mem_incremental_compact`, `fs_warning_level`, `con_min_severity`
     - Added launch options
         - `-gl_spirv`, `-gl_glsl140`, `-gl_syncread`, `-fs_report_long_reads`
-- Rewrote the engine base libraries tier0/tier1/vstdlib: memory manager, logging, console variables
+- Rewrote the engine base components tier0/tier1/vstdlib: memory manager, logging, console variables
 
 #### :bug: Bug Fix {#fixes}
 
@@ -104,7 +111,8 @@ Version **2.5.7.0** remains the last one for Windows XP and Vista: on these syst
 - Fixed missing avatars of Steam players when Steam briefly stopped responding: the avatar did not show up until the game was restarted (@Nord1cWarr1or) [issue=CS-GoldClient/tracker/146]
 - Fixed a crash on exiting the game while avatars were loading
 - Fixed the demo player speed controls speeding up the game on a server, broken in 2.5.7.0 (@AliNemati13) [issue=CS-GoldClient/tracker/158]
-    - The demo speed now applies only while a demo is playing, `viewdemo` without a demo does not open the player on a server connection
+- Fixed camera compatibility with anti-cheats and demo scanners: the camera sway leaked into the view angles, so demos were falsely flagged as cheated
+- Fixed input loss and instability with `cl_cmdtickrate`: part of the movement commands never reached the server, which broke sgs and +strafe
 
 #### Authors 1 {#authors}
 <!-- authors -->
