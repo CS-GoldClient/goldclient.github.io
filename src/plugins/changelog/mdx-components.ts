@@ -7,6 +7,18 @@ interface MdxComponentRegistration {
 }
 
 export const MDX_COMPONENTS_REGISTRY: MdxComponentRegistration[] = [{
+    componentName: 'LinuxIcon',
+    importPath: '@site/src/components/Icons',
+    regex: /:linux:/g,
+    getReplacement: () => '<LinuxIcon width="1.3em" height="1.3em" style={{ verticalAlign: "-0.15em" }} />',
+  },
+  {
+    componentName: 'WindowsIcon',
+    importPath: '@site/src/components/Icons',
+    regex: /:windows:/g,
+    getReplacement: () => '<WindowsIcon width="1.1em" height="1.1em" style={{ verticalAlign: "-0.15em", color: "#3A8DDE" }} />',
+  },
+  {
     componentName: 'BugBadge',
     importPath: '@site/src/components/Misc/Badges',
     regex: /\[stockbug\]/g,
