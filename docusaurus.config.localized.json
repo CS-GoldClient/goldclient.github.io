@@ -2,25 +2,61 @@
   "title": {
     "ru": "GoldClient | Скачать КС 1.6 расширенный клиент, Русская версия (Counter-Strike 1.6)",
     "en": "GoldClient | Download CS 1.6 enhanced client, Global version (Counter-Strike 1.6)"
+    "de": "GoldClient | CS 1.6 Erweiterten Client herunterladen, Globale Version (Counter-Strike 1.6)",
+    "fr": "GoldClient | Télécharger le client amélioré CS 1.6, Version globale (Counter-Strike 1.6)",
+    "it": "GoldClient | Scarica client avanzato CS 1.6, Versione globale (Counter-Strike 1.6)",
+    "es": "GoldClient | Descargar cliente mejorado de CS 1.6, Versión global (Counter-Strike 1.6)",
+    "nl": "GoldClient | Download CS 1.6 verbeterde client, Globale versie (Counter-Strike 1.6)",
+    "pt": "GoldClient | Baixar cliente aprimorado do CS 1.6, Versão global (Counter-Strike 1.6)"
   },
   "footer.copyright": {
     "ru" : "© {year} GoldClient. Построено с использованием Docusaurus.",
     "en" : "© {year} GoldClient. Built with Docusaurus."
+    "de": "© {year} GoldClient. Erstellt mit Docusaurus.",
+    "fr": "© {year} GoldClient. Construit avec Docusaurus.",
+    "it": "© {year} GoldClient. Realizzato con Docusaurus.",
+    "es": "© {year} GoldClient. Creado con Docusaurus.",
+    "nl": "© {year} GoldClient. Gebouwd met Docusaurus.",
+    "pt": "© {year} GoldClient. Desenvolvido com Docusaurus."
   },
   "feed.title": {
     "ru" : "Информация о выпуске",
     "en" : "Changelog"
+    "de": "Änderungsprotokoll",
+    "fr": "Journal des modifications",
+    "it": "Registro delle modifiche",
+    "es": "Historial de cambios",
+    "nl": "Wijzigingslogbestand",
+    "pt": "Histórico de alterações"
   },
   "feed.description": {
     "ru" : "Будьте в курсе новых функций, появляющихся в каждом выпуске",
     "en" : "Keep yourself up-to-date about new features in every release"
+    "de": "Bleiben Sie über neue Funktionen in jedem Release auf dem Laufenden",
+    "fr": "Restez informé des nouvelles fonctionnalités de chaque version",
+    "it": "Resta aggiornato sulle nuove funzionalità di ogni versione",
+    "es": "Mantente al tanto de las nuevas funciones en cada versión",
+    "nl": "Blijf op de hoogte van nieuwe functies in elke release",
+    "pt": "Mantenha-se atualizado sobre as novas funcionalidades a cada versão"
   },
   "changelog.release.description": {
     "ru": "Список изменений версии {version}: новые функции, исправления и улучшения GoldClient.",
     "en": "Changelog for GoldClient version {version}: new features, bug fixes, and improvements."
+    "de": "Änderungsprotokoll für GoldClient Version {version}: Neue Funktionen, Fehlerbehebungen und Verbesserungen.",
+    "fr": "Journal des modifications pour GoldClient version {version} : nouvelles fonctionnalités, corrections de bugs et améliorations.",
+    "it": "Registro delle modifiche per GoldClient versione {version}: nuove funzionalità, correzioni di bug e miglioramenti.",
+    "es": "Historial de cambios para GoldClient versión {version}: nuevas funciones, correcciones de errores y mejoras.",
+    "nl": "Wijzigingslogbestand voor GoldClient-versie {version}: nieuwe functies, foutoplossingen en verbeteringen.",
+    "pt": "Histórico de alterações do GoldClient versão {version}: novas funcionalidades, correções de bugs e melhorias."
   },
   "changelog.description": {
     "ru": "История изменений GoldClient. Текущая версия: {version}. Полный список новых функций и исправлений.",
     "en": "GoldClient Changelog & Release Notes. Current version: {version}. Full list of new features and fixes."
+    "de": "GoldClient Änderungsprotokoll & Versionshinweise. Aktuelle Version: {version}. Vollständige Liste der neuen Funktionen und Fehlerbehebungen.",
+    "fr": "Journal des modifications et notes de version de GoldClient. Version actuelle : {version}. Liste complète des nouvelles fonctionnalités et corrections.",
+    "it": "Registro delle modifiche e note di rilascio di GoldClient. Versione attuale: {version}. Elenco completo di nuove funzionalità e correzioni.",
+    "es": "Historial de cambios y notas de la versión de GoldClient. Versión actual: {version}. Lista completa de nuevas funciones y correcciones.",
+    "nl": "GoldClient-wijzigingslogbestand en release-opmerkingen. Huidige versie: {version}. Volledige lijst van nieuwe functies en foutoplossingen.",
+    "pt": "Histórico de alterações e notas de versão do GoldClient. Versão atual: {version}. Lista completa de novas funcionalidades e correções."
   }
 }
